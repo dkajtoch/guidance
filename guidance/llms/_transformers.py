@@ -835,12 +835,15 @@ class TransformersStreamer:
         # The decoder-based models output input_ids and generated tokens as `new_tokens`.
         # The encoder-decoder models only output generated tokens as `new_tokens`.
         # We normalize it here so that we always have `new_tokens` as the input_ids + generated tokens.
-        starts_with_input_ids = all(
-            [
-                (new_tokens[idx, : len(self.input_ids[idx])] == self.input_ids[idx]).all()
-                for idx in range(len(self.input_ids))
-            ]
-        )
+        if len(new_tokens[0]) < len(self.input_ids[0]):
+            starts_with_input_ids = False
+        else:
+            starts_with_input_ids = all(
+                [
+                    (new_tokens[idx, : len(self.input_ids[idx])] == self.input_ids[idx]).all()
+                    for idx in range(len(self.input_ids))
+                ]
+            )
         if not starts_with_input_ids:
             new_tokens = torch.cat([self.input_ids, new_tokens], dim=-1)
 
