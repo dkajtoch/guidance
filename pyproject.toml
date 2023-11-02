@@ -1,0 +1,58 @@
+[tool.black]
+target-version = ["py310"]
+exclude = '''
+/(
+  | \.github
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.venv
+  | \.env
+  | \.idea
+  | build
+)/
+'''
+
+[tool.isort]
+known_first_party = "guidance"
+py_version = "310"
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
+order_by_type = false
+skip = [
+    ".github",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".venv",
+    ".env",
+    ".idea",
+    "build"
+]
+
+[tool.mypy]
+python_version = "3.10"
+show_error_codes = true
+ignore_missing_imports = true
+install_types = true
+non_interactive = true
+follow_imports = "silent"
+strict_optional = true
+check_untyped_defs = true
+
+warn_incomplete_stub = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_ignores = true
+warn_unused_configs = true
+
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_defs = true
+disallow_untyped_decorators = true
+
+exclude = ".github|.mypy_cache|.pytest_cache|.venv|.env|.idea|build|^tests"

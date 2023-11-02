@@ -1,5 +1,5 @@
 import JupyterComm from './jupyter-comm';
-import autoBind from 'auto-bind'; 
+import autoBind from 'auto-bind';
 
 export default class PromptDisplay {
   constructor(id, executing) {
@@ -19,7 +19,7 @@ export default class PromptDisplay {
     this.stop_button.onclick = () => this.comm.send("event", "stop");
     // this.stop_button = document.createElement('div');
     // this.stop_button.style.cssText = 'cursor: pointer; margin: 0px; display: none; float: right; padding: 3px; border-radius: 4px 4px 4px 4px; border: 0px solid rgba(127, 127, 127, 1); padding-left: 10px; padding-right: 10px; font-size: 13px; background-color: rgba(127, 127, 127, 0.25);';
-    // 
+    //
     // this.stop_button.innerText = 'Stop program';
     // if (!executing) {
     //   this.stop_button.style.display = "none";
@@ -64,7 +64,7 @@ export default class PromptDisplay {
     // }
     // this.element.innerHTML = str;
 
-    
+
   }
 
   appendData(data) {
@@ -75,7 +75,7 @@ export default class PromptDisplay {
       this.element.innerHTML += data;
       // this.cell.outputs[0].data["text/plain"] = "ASDFASDFASDFASDFASD";
       // this.cell.outputs[0].data["text/html"] = data;
-      
+
       // this sets the data that will be saved in the notebook file (only works in Jupyter notebook, not JupyterLab or VSCode)
       // this.cell.outputs[0].data = {
       //   "text/html": data

@@ -1,0 +1,11 @@
+[flake8]
+ignore =
+    # whitespace before ‘,’, ‘;’, or ‘:’
+    E203,
+    # line too long
+    E501,
+    # line break before binary operator
+    W503
+    # Imported but unused
+    F401
+exclude= .venv,.tox

@@ -1,11 +1,12 @@
 import os
-from typing import Dict, Any
+from typing import Any, Dict
 
 import platformdirs
 
 from guidance.llms.caches import Cache
+
 try:
-    from gptcache.adapter.api import get, put, init_similar_cache
+    from gptcache.adapter.api import get, init_similar_cache, put
 except ImportError:
     pass
 

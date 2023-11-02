@@ -5,7 +5,7 @@
 API Examples
 ----------------
 
-These examples parallel the namespace structure of Guidance. Each object or function in Guidance has a 
+These examples parallel the namespace structure of Guidance. Each object or function in Guidance has a
 corresponding example notebook here that demonstrates its API usage. The source notebooks
 are `available on GitHub <https://github.com/guidance-ai/guidance/tree/master/notebooks/api_examples>`_.
 

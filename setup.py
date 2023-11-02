@@ -1,9 +1,11 @@
+import codecs
 import os
 import re
-import codecs
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 here = os.path.abspath(os.path.dirname(__file__))
+
 
 def read(*parts):
     with codecs.open(os.path.join(here, *parts), "r") as fp:
@@ -43,18 +45,14 @@ setup(
         "aiohttp",
     ],
     extras_require={
-        'docs': [
-            'ipython',
-            'numpydoc',
-            'sphinx_rtd_theme',
-            'sphinx',
-            'nbsphinx'
+        "docs": ["ipython", "numpydoc", "sphinx_rtd_theme", "sphinx", "nbsphinx"],
+        "test": [
+            "pytest",
+            "transformers",
+            "torch",
+            "pytest-cov",
+            "mypy",
+            "pre-commit",
         ],
-        'test': [
-            'pytest',
-            'transformers',
-            'torch',
-            'pytest-cov'
-        ]
-    }
+    },
 )

@@ -104,7 +104,7 @@ class InnerJupyterComm {
         // console.log("target_name", target_name, this.jcomm)
       }
     } else if (window._mgr !== undefined) {
-      
+
       // this.jcomm = window._mgr.widgetManager.proxyKernel.createComm(target_name);
       // this.jcomm.onMsg(this._fire_callback);
       if (mode === "register") {
