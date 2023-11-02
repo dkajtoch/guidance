@@ -837,7 +837,7 @@ class TransformersStreamer:
         # We normalize it here so that we always have `new_tokens` as the input_ids + generated tokens.
         starts_with_input_ids = all(
             [
-                new_tokens[idx, : len(self.input_ids[idx])] == self.input_ids[idx]
+                (new_tokens[idx, : len(self.input_ids[idx])] in self.input_ids[idx])
                 for idx in range(len(self.input_ids))
             ]
         )
