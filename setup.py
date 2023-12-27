@@ -54,5 +54,6 @@ setup(
             "mypy",
             "pre-commit",
         ],
+        "vllm": ["vllm==0.2.6"]
     },
 )
