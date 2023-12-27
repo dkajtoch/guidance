@@ -39,14 +39,14 @@ class VLLMWrapper(LLM):
     def __init__(
         self,
         server_uri,
-        pretrained_model_name_or_path,
+        model,
         caching=True,
         temperature=0.0,
         **kwargs,
     ):
         super().__init__()
         self.server_uri = server_uri
-        self._tokenizer = AutoTokenizer.from_pretrained(pretrained_model_name_or_path)
+        self._tokenizer = AutoTokenizer.from_pretrained(model)
         self.caching = caching
         self.temperature = temperature
 
