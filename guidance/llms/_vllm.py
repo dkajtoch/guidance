@@ -1,3 +1,4 @@
+import logging
 from urllib.parse import urljoin
 
 import requests
@@ -5,6 +6,8 @@ from requests.adapters import HTTPAdapter, Retry
 from transformers import AutoTokenizer
 
 from guidance.llms import LLM, LLMSession, SyncSession
+
+logger = logging.getLogger(__name__)
 
 
 def _get_session() -> requests.Session:
@@ -77,13 +80,14 @@ class VLLMSession(LLMSession):
         caching=None,
         **generate_kwargs,
     ):
-        assert (
-            token_healing is None or token_healing is False
-        ), "Token healing is not supported for VLLM"
-        assert (
-            stop is None and stop_regex is None
-        ), "Stop and stop_regex are not supported for VLLM"
-        assert logit_bias is None, "Logit bias is not supported for VLLM"
+        self._log_on_unused_argument(
+            token_healing=token_healing,
+            logit_bias=logit_bias,
+            stop=stop,
+            stop_regex=stop_regex,
+            logprobs=logprobs,
+            pattern=pattern,
+        )
 
         if temperature is None:
             temperature = self.llm.temperature
@@ -112,3 +116,9 @@ class VLLMSession(LLMSession):
                 response.raise_for_status()
                 llm_cache[key] = _output_parser(response.json(), prompt)
         return llm_cache[key]
+
+    @staticmethod
+    def _log_on_unused_argument(**kwargs):
+        for key, val in kwargs.items():
+            if val in None:
+                logger.warning(f"Argument {key} is not used by VLLM.")
