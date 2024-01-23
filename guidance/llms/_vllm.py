@@ -120,5 +120,5 @@ class VLLMSession(LLMSession):
     @staticmethod
     def _log_on_unused_argument(**kwargs):
         for key, val in kwargs.items():
-            if val in None:
+            if val is None:
                 logger.warning(f"Argument {key} is not used by VLLM.")
