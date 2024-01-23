@@ -83,9 +83,7 @@ class VLLMSession(LLMSession):
         self._log_on_unused_argument(
             token_healing=token_healing,
             logit_bias=logit_bias,
-            stop=stop,
             stop_regex=stop_regex,
-            logprobs=logprobs,
             pattern=pattern,
         )
 
@@ -98,6 +96,8 @@ class VLLMSession(LLMSession):
             n=n,
             max_tokens=max_tokens,
             top_p=top_p,
+            stop=stop,
+            logprobs=logprobs,
         )
 
         args = locals().copy()
